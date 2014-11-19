@@ -63,7 +63,7 @@
       var tokens  = namespaceString.split('.'),
           ns      = window;
 
-      if (nativeForEach && obj.forEach === nativeForEach) {
+      if (nativeForEach && tokens.forEach === nativeForEach) {
         tokens.forEach(function (token) {
           ns[token] = ns[token] || {};
           ns        = ns[token];
@@ -87,7 +87,7 @@
       cleanedQueryString = decodeURIComponent(queryString);
       tokens             = cleanedQueryString.split('&');
 
-      if (nativeForEach && obj.forEach === nativeForEach) {
+      if (nativeForEach && tokens.forEach === nativeForEach) {
         tokens.forEach(function (token) {
           parts     = token.split('=');
           key       = parts[0];
