@@ -79,8 +79,6 @@
     deparam: function (queryString) {
       var hash = {}, cleanedQueryString, tokens, key, value, parts;
 
-      if (queryString === '' || typeof queryString === 'undefined') { return; }
-
       // Trims the '?' from the front of the queryString if it is present.
       queryString.charAt(0) === '?' ? queryString.substring(1) : queryString;
 
