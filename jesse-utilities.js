@@ -1,5 +1,5 @@
 // $ = jQuery. window = this. undefined = undefined.
-(function ($, window, undefined) {
+;(function ($, window, undefined) {
   'use strict';
 
   var nativeForEach = Array.prototype.forEach, Utilities;
@@ -130,14 +130,12 @@
       $button    = $button    instanceof $ ? $button    : $($button);
       $container = $container instanceof $ ? $container : $($container);
 
-      containerOrButton = function (e) {
-        return (!$button.is(e.target) && $button.has(e.target).length === 0) &&
-            (!$container.is(e.target) && $container.has(e.target).length === 0);
+      containerOrButton = function (event) {
+        return  (!$button.is(event.target)    && $button.has(event.target).length     === 0) &&
+                (!$container.is(event.target) && $container.has(event.target).length  === 0);
       };
 
-      $(document).on('click', function (e) {
-        if (!containerOrButton(e)) { return; }
-
+      determineClickoffOfBehavior - function () {
         switch (clickOffBehavior) {
         case 'opacity':
           $container.animate({ opacity: 0 }, 'fast');
@@ -154,6 +152,11 @@
         default:
           $container.hide();
         }
+      };
+
+      $(document).on('click', function (event) {
+        if (!containerOrButton(event)) { return; }
+        determineClickoffOfBehavior();
       });
     }
   };
